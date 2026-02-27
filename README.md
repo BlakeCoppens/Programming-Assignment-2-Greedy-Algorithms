@@ -1,1 +1,3 @@
 # Programming-Assignment-2-Greedy-Algorithms
+
+In order to run this project, clone and...
