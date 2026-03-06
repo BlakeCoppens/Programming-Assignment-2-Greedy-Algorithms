@@ -1,0 +1,4 @@
+example.in (k=3, m=50)
+FIFO  : 43
+LRU   : 44
+OPTFF : 30
