@@ -1,7 +1,7 @@
 # Programming-Assignment-2-Greedy-Algorithms
 
-Blake Coppens UFID: 31056260
-Jorge Garcia UFID: 14841166
+- Blake Coppens UFID: 31056260
+- Jorge Garcia UFID: 14841166
 
 ## Overview
 This program simulates and compares three cache eviction policies on a given request sequence:
