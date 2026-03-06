@@ -33,23 +33,24 @@ OPTFF cuts misses in half by looking ahead. On first pass it must load all items
 
 # Question 3. Prove OPTFF is Optimal
 
-Claim: 
-    - For any offline algorithm A and any fixed request sequence, the number of misses due to OPTFF is no more than the number of misses due to A.
+**Claim:** 
+For any offline algorithm A and any fixed request sequence, the number of misses due to OPTFF is no more than the number of misses due to A.
 
-Proof:
-    - Assume OPTFF and A has same inital cache state and processes the request sequence len(m) with cache capcity k.
-    We start by finding the first divergence!
-    - Both algorithms start at the same point, but there must be a point where they make different eviction choices.
-        - here, OPTFF evicts item x, whose next use is the furthest. 
-        - A evicts item y, whose next use comes way sooner than item x. 
-    Then, we modify A into A'
-    - We make A' identical to A, except A' evicts x instead of y. This will mean that A' agrees with OPTFF.
-    Then, we model the misses between A' and A
-    - After the swap, A' holds y and A holds x. The following happens
-        - requests for items other than x or y dont get affected
-        - when y is requested, A' has it, A does not, meaning that A' is a hit and A is a miss. 
-        - when x is requested, A' takes a miss but x's next use is way farther out in the future, this miss occurs no sooner than the miss A has for y
+**Proof:**
+Assume OPTFF and A has same inital cache state and processes the request sequence len(m) with cache capcity k.
+**We start by finding the first divergence!**
+Both algorithms start at the same point, but there must be a point where they make different eviction choices.
+- here, OPTFF evicts item x, whose next use is the furthest. 
+- A evicts item y, whose next use comes way sooner than item x. 
+**Then, we modify A into A'**
+- We make A' identical to A, except A' evicts x instead of y. This will mean that A' agrees with OPTFF.
+**Then, we model the misses between A' and A**
+- After the swap, A' holds y and A holds x. The following happens
+    - requests for items other than x or y dont get affected
+    - when y is requested, A' has it, A does not, meaning that A' is a hit and A is a miss. 
+    - when x is requested, A' takes a miss but x's next use is way farther out in the future, this miss occurs no sooner than the miss A has for y
     In EVERY case, misses(A') <= misses(A)
-    A' now agrees with OPTFF one step further than A but to make sure of this, we repeat this!
+**A' now agrees with OPTFF one step further than A but to make sure of this, we repeat this!**
     - Repeat at every divergence point transforms A into OPTFF without increasing miss count, so we can conclude
-    misses(OPTFF) <= misses(A); and OPTFF is optimal    
+
+misses(OPTFF) <= misses(A); and OPTFF is optimal    
